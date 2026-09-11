@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img" aria-labelledby="title desc">
+  <title id="title">jux / personal studio</title>
+  <desc id="desc">Cream editorial banner with a blue jux wordmark and an abstract folded page. Useful software, made with curiosity.</desc>
+  <rect width="1200" height="440" rx="12" fill="#f5f2eb"/>
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" fill="#4a4a48" font-size="17" letter-spacing="2">
+    <text x="56" y="55">JDAHD / PERSONAL STUDIO</text>
+    <text x="56" y="393">CODE · DESIGN · CURIOSITY</text>
+  </g>
+  <path d="M56 82H1144" stroke="#d3cfc7"/>
+  <text x="48" y="273" font-family="Arial, Helvetica, sans-serif" font-size="214" font-weight="700" letter-spacing="-15" fill="#244be0">jux<tspan fill="#262725">.</tspan></text>
+  <text x="59" y="324" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#363734">Useful software, made with curiosity.</text>
+  <g transform="translate(846 120)">
+    <rect x="-23" y="24" width="215" height="220" rx="4" fill="none" stroke="#cecbc3" stroke-width="2"/>
+    <path d="M0 0H145L215 70V220H0Z" fill="#244be0"/>
+    <path d="M145 0V70H215" fill="#adc0ff"/>
+    <g stroke="#f5f2eb" stroke-width="5" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+      <path d="M65 103L40 127L65 151M148 103L173 127L148 151M120 94L94 163"/>
+    </g>
+  </g>
+  <circle cx="1136" cy="388" r="7" fill="#244be0"/>
+</svg>
