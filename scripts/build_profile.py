@@ -1,33 +1,66 @@
-"""Build the self-contained GitHub profile image (Python standard library only)."""
+"""Build self-contained profile SVGs from local artwork and an outlined wordmark."""
 from pathlib import Path
-import random
+import base64
 import xml.etree.ElementTree as ET
 
 root = Path(__file__).resolve().parent.parent
-rng = random.Random(12)
-cells = []
-for row in range(10):
-    for col in range(18):
-        delay = rng.uniform(0, 0.18)
-        cells.append(f'<rect class="pixel" x="{col*60}" y="{row*62}" width="61" height="63" style="animation-delay:{2.8+delay:.3f}s,{7.3+delay:.3f}s"/>')
-svg = '''<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="620" viewBox="0 0 1080 620" role="img" aria-labelledby="title desc">
-<title id="title">jux — personal and selected work</title><desc id="desc">A blue and white two-sided poster. The name jux appears, a pixel transition reveals Articles-Auto, then the image returns to the personal side. Project links are below the image.</desc>
-<style>
-text{font-family:Arial,Helvetica,sans-serif}.mono{font-family:'Courier New',monospace;letter-spacing:3px;font-size:16px}.personal{opacity:1;animation:personal 8s step-end both}.work{opacity:0;animation:work 8s step-end both}.pixel{fill:#92ccea;opacity:0;animation:cover .52s step-end,cover .52s step-end}.name{font-weight:900;font-size:280px;letter-spacing:-25px;fill:#064976}.letter{animation:letter .65s steps(1,end) both}.two{animation-delay:.12s}.three{animation-delay:.24s}
-@keyframes personal{0%{opacity:1}38%{opacity:0}94.3%,100%{opacity:1}}
-@keyframes work{0%{opacity:0}38%{opacity:1}94.3%,100%{opacity:0}}
-@keyframes cover{0%{opacity:0}1%,55%{opacity:1}100%{opacity:0}}
-@keyframes letter{0%{opacity:.1}20%{opacity:.8}35%{opacity:.15}55%{opacity:1}65%{opacity:.4}100%{opacity:1}}
-@media(prefers-reduced-motion:reduce){.personal,.work,.pixel,.letter{animation:none}.personal{opacity:1}.work,.pixel{opacity:0}}
-</style><defs><linearGradient id="water" x2=".3" y2="1"><stop stop-color="#c0f4ff"/><stop offset=".45" stop-color="#159cc5"/><stop offset="1" stop-color="#003f7b"/></linearGradient><radialGradient id="light"><stop stop-color="white" stop-opacity=".8"/><stop offset="1" stop-color="#9aefff" stop-opacity="0"/></radialGradient><clipPath id="art"><path d="M620 0H1080V620H510Z"/></clipPath></defs>
-<g class="personal"><path fill="#f7fbfd" d="M0 0h1080v620H0z"/><g clip-path="url(#art)"><path fill="url(#water)" d="M480 0h600v620H480z"/><ellipse cx="1020" cy="110" rx="260" ry="290" fill="url(#light)"/><g stroke="#bbf3fa" fill="none" opacity=".35"><ellipse cx="930" cy="580" rx="420" ry="70"/><ellipse cx="930" cy="580" rx="350" ry="52"/><ellipse cx="930" cy="580" rx="230" ry="33"/></g><path d="M870 -60L690 620h90L1030 -20Z" fill="#e9ffff" opacity=".12"/><path d="M680 -60L535 620h35L760 -30Z" fill="#e9ffff" opacity=".13"/><circle cx="875" cy="260" r="125" fill="none" stroke="#efffff" opacity=".4"/></g>
-<g fill="#113659"><text x="40" y="50" class="mono">01 / PERSONAL</text><text x="1034" y="48" text-anchor="end" font-size="28">✳</text><text class="name" x="28" y="325"><tspan class="letter">j</tspan><tspan class="letter two">u</tspan><tspan class="letter three">x</tspan></text><text x="42" y="455" font-size="23">@jdahd</text><text x="42" y="495" class="mono">CODE / IMAGES / IDEAS</text></g><path fill="#f7fbfd" opacity=".85" d="M0 542h1080v78H0z"/><path stroke="#113659" opacity=".15" d="M0 542h1080"/><g fill="#113659" class="mono"><text x="40" y="588">PERSONAL EDITION</text><text x="1040" y="588" text-anchor="end">JUX / 001</text></g></g>
-<g class="work"><path fill="#102f4e" d="M0 0h1080v620H0z"/><text x="40" y="50" fill="#a6c2d9" class="mono">02 / SELECTED WORK</text><g fill="#ecf5fc"><text x="38" y="164" font-size="80" letter-spacing="-4">Articles</text><text x="38" y="247" font-size="80" letter-spacing="-4">— Auto.</text></g><g fill="#bdd2e4" font-size="22"><text x="42" y="333">Save articles and images.</text><text x="42" y="370">Keep a local copy.</text></g>
-<g transform="translate(596 65) rotate(7)"><path fill="#29779d" d="M-18 18h425v426H-18z"/><path fill="#f5f2e9" d="M0 0h425v426H0z"/><g fill="#243e50"><text x="30" y="43" font-family="monospace" font-size="14" letter-spacing="2">ARTICLES-AUTO / EXPORT</text><text x="30" y="128" style="font-family:Georgia,serif" font-size="48">Articles.</text><text x="30" y="181" style="font-family:Georgia,serif" font-size="48">Kept locally.</text></g><g stroke="#243e50" opacity=".12" stroke-width="7"><path d="M30 227h365M30 249h365M30 271h265"/></g><g fill="#243e50" font-size="18"><text x="30" y="330">Markdown / HTML / Word</text></g></g>
-<path stroke="#fff" opacity=".2" d="M0 542h1080"/><g fill="#ecf5fc" class="mono"><text x="40" y="588">SELECTED WORK</text><text x="1040" y="588" text-anchor="end">LINK BELOW ↗</text></g></g>
-''' + '\n'.join(cells) + '</svg>\n'
-ET.fromstring(svg)
-(root / 'assets' / 'double-sided.svg').write_text(svg)
-print(f'Built assets/double-sided.svg ({len(svg.encode()):,} bytes)')
-static = svg.replace('</style>', '.personal,.work,.pixel,.letter{animation:none!important}.personal{opacity:1}.work,.pixel{opacity:0}</style>')
-(root / 'assets' / 'double-sided-static.svg').write_text(static)
+assets = root / 'assets'
+gallery = assets / 'gallery'
+
+def data(name):
+    return 'data:image/jpeg;base64,' + base64.b64encode((gallery / name).read_bytes()).decode()
+
+names = ['underwater.jpg', 'blue-sky.jpg', 'cloud-sea.jpg']
+imgs = [data(name) for name in names]
+wordmark = (gallery / 'wordmark-path.txt').read_text()
+style = '''
+text{font-family:Arial,Helvetica,sans-serif}.mono{font-family:monospace;font-size:15px;letter-spacing:2px}.photo{transform-origin:600px 337px}.base-photo{animation:drift 13s ease-out both}.photo-two{animation:drift 5s 4s ease-out both}.photo-three{animation:drift 5s 8s ease-out both}.slice{transform-box:fill-box;transform-origin:center;transform:scaleY(0)}.slice-two{animation:open 700ms cubic-bezier(.22,1,.36,1) both}.slice-three{animation:open 700ms cubic-bezier(.22,1,.36,1) both,shut 600ms cubic-bezier(.65,0,.35,1) forwards}.scene-two{animation:hide-two 14s step-end both}.wordmark{animation:arrive 1.1s cubic-bezier(.22,1,.36,1) both}.echo{opacity:0;animation:echo .7s .15s ease-out both}.indicator-two{opacity:0;animation:active-two 14s step-end both}.indicator-three{opacity:0;animation:active-three 14s step-end both}.indicator-one{animation:active-one 14s step-end both}
+@keyframes drift{from{transform:scale(1.055) translate(-7px,3px)}to{transform:scale(1)}}
+@keyframes open{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes shut{from{transform:scaleY(1)}to{transform:scaleY(0)}}
+@keyframes hide-two{0%,84%{opacity:1}84.1%,100%{opacity:0}}
+@keyframes arrive{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:translateX(0)}}
+@keyframes echo{0%{opacity:.7;transform:translateX(18px)}100%{opacity:0;transform:translateX(0)}}
+@keyframes active-one{0%{opacity:1}31%{opacity:0}92%,100%{opacity:1}}
+@keyframes active-two{0%{opacity:0}31%{opacity:1}60%,100%{opacity:0}}
+@keyframes active-three{0%{opacity:0}60%{opacity:1}92%,100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.scene-two,.scene-three,.echo,.indicator-two,.indicator-three{display:none}.photo,.wordmark{transform:none}.indicator-one{opacity:1}}
+'''
+
+# Each image is defined once; all artwork bytes live inside the SVG.
+def make(static=False):
+    extra = '*{animation:none!important}.scene-two,.scene-three,.echo,.indicator-two,.indicator-three{display:none}.photo,.wordmark{transform:none}.indicator-one{opacity:1}' if static else ''
+    defs = ''.join(f'<image id="photo{i}" width="1200" height="675" preserveAspectRatio="xMidYMid slice" href="{src}"/>' for i,src in enumerate(imgs if not static else imgs[:1]))
+    clips = ''
+    for scene in [2,3]:
+        cells = ''
+        for i in range(12):
+            delay = (4 if scene==2 else 8) + (i%3)*.075 + i*.012
+            end = 12 + (11-i)*.024
+            delays = f'{delay:.3f}s' if scene==2 else f'{delay:.3f}s,{end:.3f}s'
+            cells += f'<rect x="{i*100}" y="0" width="101" height="675" class="slice slice-{["two","three"][scene-2]}" style="animation-delay:{delays}"/>'
+        clips += f'<clipPath id="slices{scene}">{cells}</clipPath>'
+    overlays = '' if static else '<g class="scene-two" clip-path="url(#slices2)"><use href="#photo1" class="photo photo-two"/></g><g class="scene-three" clip-path="url(#slices3)"><use href="#photo2" class="photo photo-three"/></g>'
+    thumbs = ''
+    # Thumbnails are actual selected frames, not decorative controls.
+    if not static:
+        for i in range(3):
+            x=874+i*88
+            thumbs += f'<svg x="{x}" y="692" width="72" height="40" viewBox="0 0 1200 675"><use href="#photo{i}"/></svg><path class="indicator-{["one","two","three"][i]}" d="M{x} 738h72" stroke="#237da0" stroke-width="3"/>'
+    else:
+        thumbs = '<text x="1145" y="720" text-anchor="end" class="mono" fill="#315269">01 / STILL</text>'
+    out = f'''<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="752" viewBox="0 0 1200 752" role="img" aria-labelledby="title desc">
+<title id="title">jux — a blue visual collection</title><desc id="desc">Three selected wallpapers: Makoto Yuki underwater, a blue-sky portrait, and a cloud-sea scene. Staggered vertical shutters reveal each image, then return to Makoto Yuki. The italic jux wordmark stays to the left. Links below lead to the projects.</desc>
+<style>{style}{extra}</style><defs>{defs}{clips}<linearGradient id="shade"><stop stop-color="#041329" stop-opacity=".78"/><stop offset=".5" stop-color="#071c32" stop-opacity=".24"/><stop offset="1" stop-color="#071c32" stop-opacity="0"/></linearGradient><clipPath id="frame"><path d="M0 0h1200v675H0z"/></clipPath><path id="logo" d="{wordmark}"/></defs>
+<path fill="#eef5f8" d="M0 0h1200v752H0z"/><g clip-path="url(#frame)"><use href="#photo0" class="photo base-photo"/>{overlays}<path fill="url(#shade)" d="M0 0h1200v675H0z"/></g>
+<g fill="#f4faff"><text x="52" y="52" class="mono">JUX / @JDAHD</text><text x="1148" y="52" class="mono" text-anchor="end">VISUAL COLLECTION</text>
+<g transform="translate(128 342) scale(.30)"><g class="echo" fill="#a2dfff"><use href="#logo"/></g><g class="wordmark"><use href="#logo"/></g></g>
+<text x="57" y="430" font-size="19" letter-spacing="5">CODE / IMAGES / IDEAS</text><path d="M56 469h42" stroke="#c7e6f4"/><text x="56" y="630" class="mono">PERSONAL EDITION — 002</text></g>
+<g fill="#29465b"><text x="52" y="717" font-size="20">jux.</text><text x="125" y="718" class="mono">SELECTED FRAMES</text></g>{thumbs}</svg>'''
+    ET.fromstring(out)
+    return out
+
+for filename,static in [('double-sided.svg',False),('double-sided-static.svg',True)]:
+    svg=make(static)
+    (assets/filename).write_text(svg)
+    print(filename, f'{len(svg.encode())/1024:.0f} KB')

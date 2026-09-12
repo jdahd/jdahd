@@ -1,6 +1,6 @@
 <picture>
   <source media="(prefers-reduced-motion: reduce)" srcset="assets/double-sided-static.svg" />
-  <img src="assets/double-sided.svg" width="100%" alt="jux — a blue and white two-sided poster, featuring Articles-Auto. Project and collection links are below." />
+  <img src="assets/double-sided.svg" width="100%" alt="jux — three blue-toned wallpapers with animated shutter transitions and an italic wordmark. Project and collection links are below." />
 </picture>
 
 <p align="center">
