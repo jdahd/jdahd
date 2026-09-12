@@ -17,30 +17,30 @@
 <g fill="#f6e8cf"><circle cx="844" cy="118" r="2"/><circle cx="690" cy="145" r="2"/><circle cx="1045" cy="82" r="2"/><circle cx="995" cy="278" r="2"/><path d="M741 91v10m-5-5h10M1053 325v10m-5-5h10" stroke="#f6e8cf"/></g>
 <rect width="1120" height="40" fill="#e7e4db"/><path d="M0 40H1120" stroke="#24232b" stroke-width="2"/>
 <g font-family="Menlo,Consolas,monospace" font-size="16" fill="#24232b"><text x="24" y="27">✳</text><text x="62" y="27" font-weight="bold">jux</text><text x="124" y="27">File</text><text x="188" y="27">Edit</text><text x="254" y="27">View</text><text x="325" y="27">Special</text><text x="873" y="27">a personal computer</text></g>
-<g fill="#e8dccf" font-family="Georgia,serif" font-style="italic"><text x="48" y="143" font-size="82">a place for</text><text x="51" y="210" font-size="66">unfinished ideas.</text></g>
+<g fill="#e8dccf" font-family="Georgia,serif" font-style="italic"><text x="48" y="143" font-size="82">jux’s</text><text x="51" y="210" font-size="66">desktop.</text></g>
 <g filter="url(#shadow)">
 <rect x="333" y="216" width="507" height="389" rx="3" fill="#252638" stroke="#171722" stroke-width="2"/>
 <path d="M335 219H838V251H335Z" fill="#b9b3cc"/><rect x="348" y="228" width="12" height="12" fill="#e9e4db" stroke="#24232b"/>
 <text x="384" y="239" font-family="Menlo,monospace" font-size="14" fill="#24232b">untitled.py — editor</text><path d="M334 252H839" stroke="#171722" stroke-width="2"/>
 <g font-family="Menlo,Consolas,monospace" font-size="18"><text x="360" y="282" fill="#bba5ec">01  def <tspan fill="#f0cea0">make_something</tspan><tspan fill="#e7e4db">():</tspan></text><text x="402" y="327" fill="#b8cda9">idea = "what if..."</text><text x="402" y="364" fill="#e7e4db">try_it(idea)</text><text x="402" y="401" fill="#e7e4db">make_it_feel_right()</text><text x="402" y="438" fill="#bba5ec">return <tspan fill="#f0cea0">another_question</tspan></text></g>
-<path d="M335 573H838" stroke="#55536b"/><text x="354" y="594" font-family="Menlo,monospace" font-size="13" fill="#c2bace">a sketch, not a deadline.</text>
+<path d="M335 573H838" stroke="#55536b"/><text x="354" y="594" font-family="Menlo,monospace" font-size="13" fill="#c2bace">Python / editor</text>
 </g>
 <g filter="url(#shadow)">
 <rect x="64" y="300" width="561" height="406" rx="3" fill="#eeeae0" stroke="#29262f" stroke-width="2"/>
 <rect x="67" y="303" width="555" height="31" fill="url(#stripes)"/><rect x="79" y="310" width="15" height="15" fill="#eeeae0" stroke="#29262f"/>
 <rect x="230" y="305" width="210" height="26" fill="#eeeae0"/><text x="250" y="324" font-family="Menlo,monospace" font-size="16" fill="#29262f">read_me_first.txt</text><path d="M65 335H624" stroke="#29262f" stroke-width="2"/>
-<text x="96" y="371" fill="#777168" font-family="Menlo,monospace" font-size="13" letter-spacing="2">A NOTE FROM THE OWNER</text>
-<text x="92" y="431" fill="#29262f" font-family="Georgia,serif" font-size="55">hello, stranger.</text>
-<g font-family="Arial,'PingFang SC','Microsoft YaHei',sans-serif" fill="#363238" font-size="23"><text x="98" y="473">我是 jux，欢迎随便看看。</text><text x="98" y="514">我做些小工具，也折腾界面。</text><text x="98" y="552">从一个「要不试试」，</text><text x="98" y="590">做到自己愿意每天打开。</text></g>
+<text x="96" y="371" fill="#777168" font-family="Menlo,monospace" font-size="13" letter-spacing="2">ABOUT / 关于我</text>
+<text x="92" y="431" fill="#29262f" font-family="Georgia,'Songti SC','Microsoft YaHei',serif" font-size="55">我是 jux。</text>
+<g font-family="Arial,'PingFang SC','Microsoft YaHei',sans-serif" fill="#363238" font-size="23"><text x="98" y="473">写点工具，改改界面。</text><text x="98" y="514">最近在折腾本地工具和 AI。</text><text x="98" y="552">项目和收藏放在下面，</text><text x="98" y="590">点开就能看。</text></g>
 <path d="M96 615H583" stroke="#c4bdb1"/><text x="98" y="649" fill="#655e58" font-family="Menlo,monospace" font-size="16">local tools / design / AI</text>
-<rect x="66" y="678" width="557" height="26" fill="#dcd7cc"/><text x="81" y="696" fill="#625c56" font-family="Menlo,monospace" font-size="12">4 lines, and a lot left to explore.</text><path d="M604 698l14-14m-7 14l7-7" stroke="#68625b"/>
+<rect x="66" y="678" width="557" height="26" fill="#dcd7cc"/><text x="81" y="696" fill="#625c56" font-family="Menlo,monospace" font-size="12">readme.txt / UTF-8</text><path d="M604 698l14-14m-7 14l7-7" stroke="#68625b"/>
 </g>
 <g transform="translate(855 376) rotate(6)" filter="url(#shadow)">
 <path d="M0 0H204V217L176 246H0Z" fill="#ead58c"/><path d="M176 246V217H204" fill="#b9a369"/><rect x="57" y="-13" width="87" height="25" fill="#d3c9bc" opacity=".85"/>
-<text x="21" y="50" font-size="13" font-family="Menlo,monospace" fill="#645a39">REMINDER TO SELF</text><g font-family="Georgia,serif" font-style="italic" font-size="34" fill="#373124"><text x="20" y="99">curious</text><text x="20" y="139">by default.</text></g><path d="M21 155Q92 148 172 156" stroke="#755f44" stroke-width="2" fill="none"/><text x="21" y="191" font-family="Arial,'PingFang SC',sans-serif" font-size="18" fill="#56482c">先动手，再慢慢想。</text>
+<text x="21" y="50" font-size="13" font-family="Menlo,monospace" fill="#645a39">TODO / 待办</text><g font-family="Georgia,'Songti SC','Microsoft YaHei',serif" font-size="30" fill="#373124"><text x="20" y="99">界面再改改</text><text x="20" y="139">文字再少点</text></g><path d="M21 155Q92 148 172 156" stroke="#755f44" stroke-width="2" fill="none"/><text x="21" y="191" font-family="Arial,'PingFang SC',sans-serif" font-size="18" fill="#56482c">这两件还没做完。</text>
 </g>
 <g transform="translate(930 66)"><path d="M0 0h35l15 15v47H0Z" fill="#eeeae0" stroke="#262432" stroke-width="2"/><path d="M35 0v15h15M9 27h30M9 35h30M9 43h22" fill="none" stroke="#77717d" stroke-width="2"/><rect x="-25" y="73" width="101" height="24" rx="2" fill="#eeeae0"/><text x="-17" y="90" font-family="Menlo,monospace" font-size="13" fill="#29262f">ideas.txt</text></g>
-<g transform="translate(654 650)" filter="url(#shadow)"><rect width="382" height="133" rx="3" fill="#ded9d0" stroke="#29262f" stroke-width="2"/><path d="M1 29H381" stroke="#29262f"/><text x="15" y="20" font-family="Menlo,monospace" font-size="13" fill="#29262f">▤ Articles-Auto</text><rect x="16" y="45" width="46" height="66" fill="#faf7ef" stroke="#a69d90"/><path d="M24 57h28M24 65h28M24 73h21M24 85h28M24 93h24" stroke="#8b8075" stroke-width="2"/><text x="78" y="67" font-family="Georgia,serif" font-size="23" fill="#29262f">Keep the words.</text><text x="79" y="93" font-family="Arial,'PingFang SC',sans-serif" font-size="16" fill="#5e5752">文章整理 / 留给离线时的自己</text><text x="79" y="115" font-family="Menlo,monospace" font-size="12" fill="#736860">Python · Markdown · HTML · Word</text></g>
-<text x="59" y="801" font-family="Georgia,serif" font-size="52" font-style="italic" fill="#eee2d0">jux.</text><text x="179" y="794" font-family="Menlo,monospace" font-size="13" fill="#c5bacb">somewhere between a thought and a working thing.</text>
+<g transform="translate(654 650)" filter="url(#shadow)"><rect width="382" height="133" rx="3" fill="#ded9d0" stroke="#29262f" stroke-width="2"/><path d="M1 29H381" stroke="#29262f"/><text x="15" y="20" font-family="Menlo,monospace" font-size="13" fill="#29262f">▤ Articles-Auto</text><rect x="16" y="45" width="46" height="66" fill="#faf7ef" stroke="#a69d90"/><path d="M24 57h28M24 65h28M24 73h21M24 85h28M24 93h24" stroke="#8b8075" stroke-width="2"/><text x="78" y="67" font-family="Georgia,serif" font-size="23" fill="#29262f">Save for later.</text><text x="79" y="93" font-family="Arial,'PingFang SC',sans-serif" font-size="16" fill="#5e5752">文章与图片 → 本地文件</text><text x="79" y="115" font-family="Menlo,monospace" font-size="12" fill="#736860">Python · Markdown · HTML · Word</text></g>
+<text x="59" y="801" font-family="Georgia,serif" font-size="52" font-style="italic" fill="#eee2d0">jux.</text><text x="179" y="794" font-family="Menlo,monospace" font-size="13" fill="#c5bacb">projects / notes / things to read</text>
 </g>
 </svg>
